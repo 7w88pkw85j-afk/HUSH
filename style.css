@@ -1,0 +1,345 @@
+:root{
+  --bg-page: #F3F0F8;
+  --bg-app: #EEE7F9;
+  --bg-app-deep: #E4D8F5;
+  --purple-900: #4A4055;
+  --purple-700: #6E56A8;
+  --purple-600: #8768C9;
+  --purple-500: #9B82D6;
+  --purple-300: #C4B3E8;
+  --purple-100: #E2D6F4;
+  --ink: #4B4655;
+  --ink-soft: #6B6577;
+  --white: #ffffff;
+  --sun: #FBD394;
+  --shadow-purple: rgba(110, 86, 168, 0.35);
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg-page);
+  font-family:'Nunito', sans-serif;
+  color:var(--ink);
+  display:flex;
+  justify-content:center;
+  padding:48px 20px 64px;
+}
+
+.page-wrap{
+  width:100%;
+  max-width:520px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.page-eyebrow{
+  margin:0 0 8px;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--purple-700);
+}
+
+.page-title{
+  margin:0 0 10px;
+  font-family:'Baloo 2', sans-serif;
+  font-weight:700;
+  font-size:26px;
+  color:var(--purple-900);
+}
+
+.page-sub{
+  margin:0 0 32px;
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--ink-soft);
+  max-width:380px;
+}
+
+/* ===================== PHONE FRAME ===================== */
+/* height matches the real exported artwork's aspect ratio (880 x 1912) exactly,
+   so the splash image and cropped slide images show with zero distortion. */
+.phone{
+  position:relative;
+  width:320px;
+  height:663px;
+  background:#111;
+  border-radius:52px;
+  padding:14px;
+  box-shadow: 0 30px 60px -20px rgba(74,64,85,0.45), 0 0 0 2px #000;
+}
+
+.phone-notch{
+  position:absolute;
+  top:14px; left:50%;
+  transform:translateX(-50%);
+  width:120px; height:26px;
+  background:#111;
+  border-radius:0 0 18px 18px;
+  z-index:20;
+}
+
+.phone-screen{
+  position:relative;
+  width:100%;
+  height:100%;
+  background:var(--bg-app);
+  border-radius:38px;
+  overflow:hidden;
+}
+
+/* ===================== SCREEN BASE ===================== */
+.screen{
+  position:absolute;
+  inset:0;
+  display:none;
+  flex-direction:column;
+  opacity:1;
+}
+.screen.active{ display:flex; }
+
+.screen.fade-out{ animation: fadeOut .55s ease forwards; }
+.screen.fade-in{ animation: fadeIn .5s ease forwards; }
+
+@keyframes fadeOut{ to{ opacity:0; } }
+@keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
+
+/* ===================== STATUS BAR ===================== */
+.status-bar{
+  flex:0 0 auto;
+  height:46px;
+  padding:0 26px 0 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+  z-index:10;
+}
+.status-time{
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:.2px;
+}
+.status-icons{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:var(--ink);
+}
+.status-icons svg{ height:11px; fill:currentColor; }
+.icon-wifi{ height:10px !important; }
+.icon-battery{ height:11px !important; width:26px; }
+.icon-battery rect:first-child{ fill:none; opacity:.35; }
+
+/* ===================== SPLASH SCREEN (real exported image) ===================== */
+.splash-screen{
+  position:relative;
+}
+.splash-tap-area{
+  position:absolute;
+  inset:0;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding:0;
+  display:block;
+}
+.fullbleed-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  -webkit-user-drag:none;
+  user-select:none;
+}
+
+/* ===================== ONBOARDING ===================== */
+.onboard-screen{
+  padding-bottom:26px;
+}
+.carousel-viewport{
+  flex:1 1 auto;
+  overflow:hidden;
+  position:relative;
+}
+.carousel-track{
+  display:flex;
+  height:100%;
+  width:300%;
+  transition: transform .38s cubic-bezier(.22,.68,.36,1);
+  touch-action: pan-y;
+}
+.slide{
+  width:33.3333%;
+  height:100%;
+  flex:0 0 33.3333%;
+  display:flex;
+  flex-direction:column;
+  padding:6px 26px 0;
+}
+.slide-copy h2{
+  font-family:'Baloo 2', sans-serif;
+  font-weight:700;
+  font-size:29px;
+  line-height:1.18;
+  color:var(--purple-900);
+  margin:6px 0 14px;
+}
+.slide-copy p{
+  font-size:14.5px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  font-weight:600;
+  margin:0 0 10px;
+}
+.slide-copy-secondary{ margin-top:4px !important; }
+
+.slide-art{
+  flex:1 1 auto;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  min-height:0;
+  margin-top:6px;
+}
+.slide-art svg{
+  width:100%;
+  height:100%;
+  max-height:230px;
+  overflow:visible;
+}
+.slide-art--hourglass{ justify-content:flex-end; }
+
+/* real exported image slide (pixel-exact — headline, illustration and dots are baked into the PNG) */
+.slide.slide--image{
+  padding:0;
+}
+.slide-real-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  -webkit-user-drag:none;
+  user-select:none;
+}
+
+/* jar illustration */
+.jar-shadow{ fill:rgba(139,111,203,0.18); }
+.jar-lid{ fill:var(--purple-500); }
+.jar-body{ fill:rgba(255,255,255,0.35); stroke:var(--purple-300); stroke-width:5; }
+.jar-body-rim{ fill:none; stroke:var(--purple-300); stroke-width:4; }
+.jar-highlight{ fill:none; stroke:#fff; stroke-width:6; stroke-linecap:round; opacity:.7; }
+.jar-badge{ fill:var(--purple-500); }
+.jar-bolt{ fill:#fff; }
+
+/* hourglass illustration */
+.glass-cap{ fill:var(--purple-500); }
+.glass-frame{ fill:rgba(255,255,255,0.4); stroke:var(--purple-300); stroke-width:5; }
+.glass-sand-top{ fill:var(--purple-500); opacity:.9;}
+.glass-sand-bottom{ fill:var(--purple-500); }
+
+/* sunrise illustration */
+.sun-circle{ fill:var(--sun); }
+.sun-rays{ stroke:var(--purple-300); stroke-width:4; stroke-linecap:round; }
+.birds{ stroke:var(--purple-300); stroke-width:3; fill:none; stroke-linecap:round; }
+.hill-back{ fill:var(--purple-300); opacity:.75; }
+.hill-front{ fill:var(--purple-500); }
+.path-road{ fill:none; stroke:var(--purple-100); stroke-width:10; stroke-linecap:round; opacity:.9;}
+.trees{ fill:var(--purple-600); opacity:.85; }
+
+/* dots */
+.dots{
+  flex:0 0 auto;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:14px 0 18px;
+}
+.dot{
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--purple-300);
+  transition:background .25s ease, transform .25s ease;
+  cursor:pointer;
+}
+.dot.active{ background:var(--purple-600); transform:scale(1.15); }
+
+/* CTA button (shared, fixed — sits below the swipeable image, colors sampled directly
+   from the real "Welcome" button pixels so it matches exactly) */
+.cta-button, .ghost-button{
+  flex:0 0 auto;
+  margin:0 27px;
+  border:none;
+  border-radius:30px;
+  padding:14px 0;
+  font-family:'Nunito', sans-serif;
+  font-weight:700;
+  font-size:16.5px;
+  color:#fff;
+  cursor:pointer;
+  background:linear-gradient(135deg, #BAAAE6, #9E8DDD);
+  box-shadow: 0 14px 24px -10px var(--shadow-purple);
+}
+.cta-button:active, .ghost-button:active{ transform:translateY(1px); }
+
+/* ===================== END / PLACEHOLDER SCREEN ===================== */
+.end-screen{ justify-content:flex-start; }
+.end-content{
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 34px;
+  gap:14px;
+}
+.end-badge{
+  width:56px; height:56px;
+  border-radius:50%;
+  background:var(--purple-500);
+  color:#fff;
+  font-size:24px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:6px;
+}
+.end-content h2{
+  font-family:'Baloo 2', sans-serif;
+  font-size:21px;
+  margin:0;
+  color:var(--purple-900);
+}
+.end-content p{
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--ink-soft);
+  margin:0 0 10px;
+}
+.ghost-button{
+  background:transparent;
+  color:var(--purple-700);
+  border:2px solid var(--purple-300);
+  box-shadow:none;
+}
+
+.page-footer{
+  margin-top:26px;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  max-width:380px;
+}
+
+@media (max-width:380px){
+  .phone{ width:290px; height:610px; }
+}

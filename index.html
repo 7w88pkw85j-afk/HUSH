@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUSH — Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="page-header">
+    <p class="page-eyebrow">学生作业演示 · 可点击原型</p>
+    <h1 class="page-title">HUSH — 社交能量恢复助手</h1>
+    <p class="page-sub">点击屏幕内容即可像真实 App 一样跳转。左右滑动中间引导卡片可切换页面。</p>
+  </div>
+
+  <div class="phone">
+    <div class="phone-notch"></div>
+    <div class="phone-screen" id="phone-screen">
+
+      <!-- ============ SCREEN: SPLASH (real exported image, pixel-exact) ============ -->
+      <section class="screen splash-screen active" id="screen-splash" data-screen="splash">
+        <button class="splash-tap-area" id="splash-tap" aria-label="进入 HUSH">
+          <img src="assets/splash.png" class="fullbleed-img" alt="HUSH splash">
+        </button>
+      </section>
+
+      <!-- ============ SCREEN: ONBOARDING (carousel) ============ -->
+      <section class="screen onboard-screen" id="screen-onboard" data-screen="onboard">
+        <div class="status-bar">
+          <span class="status-time">9:41</span>
+          <div class="status-icons">
+            <svg viewBox="0 0 18 12" class="icon-signal"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="5" y="5" width="3" height="7" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" class="icon-wifi"><path d="M8 10.2a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Z"/><path d="M4.8 6.6a4.6 4.6 0 0 1 6.4 0L10 7.8a2.9 2.9 0 0 0-4 0L4.8 6.6Z"/><path d="M2 3.9a8.5 8.5 0 0 1 12 0L12.8 5a6.8 6.8 0 0 0-9.6 0L2 3.9Z"/></svg>
+            <svg viewBox="0 0 25 12" class="icon-battery"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" fill="none" stroke="currentColor"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="22.5" y="4" width="2" height="4" rx="1"/></svg>
+          </div>
+        </div>
+
+        <div class="carousel-viewport" id="carousel-viewport">
+          <div class="carousel-track" id="carousel-track">
+
+            <!-- Slide 1 -->
+            <div class="slide" data-slide="0">
+              <div class="slide-copy">
+                <h2>Recover Your<br>Social Energy</h2>
+                <p>A quiet space for emotionally tired minds.</p>
+              </div>
+              <div class="slide-art">
+                <svg viewBox="0 0 320 380" class="art-jar">
+                  <ellipse cx="160" cy="358" rx="82" ry="10" class="jar-shadow"/>
+                  <rect x="118" y="18" width="84" height="38" rx="16" class="jar-lid"/>
+                  <path d="M92 66 q0 -18 18 -18 h100 q18 0 18 18 v250 q0 30 -30 30 h-76 q-30 0 -30 -30 Z" class="jar-body"/>
+                  <path d="M112 58 q34 -10 96 0" class="jar-body-rim"/>
+                  <path d="M108 78 q-4 60 0 150" class="jar-highlight"/>
+                  <rect x="118" y="196" width="84" height="90" rx="20" class="jar-badge"/>
+                  <path d="M170 216 l-30 42 h20 l-8 30 32 -44 h-20 Z" class="jar-bolt"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" data-slide="1">
+              <div class="slide-copy">
+                <h2>It's okay<br>to pause</h2>
+                <p>You don't have to be available all the time.</p>
+                <p class="slide-copy-secondary">HUSH helps you build healthier communication boundaries.</p>
+              </div>
+              <div class="slide-art slide-art--hourglass">
+                <svg viewBox="0 0 300 340" class="art-hourglass">
+                  <g transform="rotate(12 150 170)">
+                    <path d="M70 30 h160 q10 0 10 14 v10 q0 12 -10 12 h-160 q-10 0 -10 -12 v-10 q0 -14 10 -14 Z" class="glass-cap"/>
+                    <path d="M70 66 h160 v18 q0 60 -70 96 q-70 36 -70 96 v18 h160 v-18 q0 -60 -70 -96 q-70 -36 -70 -96 Z" class="glass-frame"/>
+                    <path d="M92 76 q58 44 58 84 q0 40 -58 84 Z" class="glass-sand-top"/>
+                    <path d="M150 236 q58 -20 58 40 v16 h-116 v-16 q0 -60 58 -40 Z" class="glass-sand-bottom"/>
+                    <path d="M70 264 h160 q10 0 10 14 v10 q0 12 -10 12 h-160 q-10 0 -10 -12 v-10 q0 -14 10 -14 Z" class="glass-cap"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Slide 3 — real exported image (headline + illustration + dots baked in, pixel-exact) -->
+            <div class="slide slide--image" data-slide="2">
+              <img src="assets/slide3_content.png" class="slide-real-img" alt="Understand. Recover. Reconnect.">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="dots" id="dots">
+          <span class="dot active" data-dot="0"></span>
+          <span class="dot" data-dot="1"></span>
+          <span class="dot" data-dot="2"></span>
+        </div>
+
+        <button class="cta-button" id="welcome-btn">Next</button>
+      </section>
+
+      <!-- ============ SCREEN: PLACEHOLDER / END ============ -->
+      <section class="screen end-screen" id="screen-end" data-screen="end">
+        <div class="status-bar">
+          <span class="status-time">9:41</span>
+          <div class="status-icons">
+            <svg viewBox="0 0 18 12" class="icon-signal"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="5" y="5" width="3" height="7" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg viewBox="0 0 16 12" class="icon-wifi"><path d="M8 10.2a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Z"/><path d="M4.8 6.6a4.6 4.6 0 0 1 6.4 0L10 7.8a2.9 2.9 0 0 0-4 0L4.8 6.6Z"/><path d="M2 3.9a8.5 8.5 0 0 1 12 0L12.8 5a6.8 6.8 0 0 0-9.6 0L2 3.9Z"/></svg>
+            <svg viewBox="0 0 25 12" class="icon-battery"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" fill="none" stroke="currentColor"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="22.5" y="4" width="2" height="4" rx="1"/></svg>
+          </div>
+        </div>
+        <div class="end-content">
+          <div class="end-badge">✓</div>
+          <h2>更多页面即将添加</h2>
+          <p>上传下一批 Figma 截图和跳转说明，我会把它们接到这里，继续往下跳转。</p>
+          <button class="ghost-button" id="restart-btn">重新体验一遍</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <p class="page-footer">点击 Splash → 滑动或点 Next/Welcome 走完引导页 → 占位页（点"重新体验一遍"可回到开头）</p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
